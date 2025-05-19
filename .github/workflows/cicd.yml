@@ -6,6 +6,10 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: read     
+  packages: write
+  
 jobs:
   call-build:
     uses: SampleProjectDotNet/reusable-workflows/.github/workflows/dotnet-build-test.yml@main
@@ -13,5 +17,5 @@ jobs:
   
   call-publish:
     needs: call-build
-    uses: SampleProjectDotNet/reusable-workflows/.github/workflows/publish-to-local-server.yml@main
+    uses: SampleProjectDotNet/reusable-workflows/.github/workflows/publish-to-file-server.yml@main
     secrets: inherit
